@@ -1,3 +1,4 @@
+--link to question: https://ramkedem.com/en/group-range/
 /****** Script for SelectTopNRows command from SSMS  ******/
 ;WITH CTE1 AS(
 SELECT [productID],[ProductName],[ProductPrice]
