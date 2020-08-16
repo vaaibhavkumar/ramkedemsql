@@ -1,0 +1,7 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+;WITH CTE1 AS(
+SELECT [productID],[ProductName],[ProductPrice]
+	  ,NTILE(3) OVER(order by ProductPrice) AS PriceGroup
+  FROM [ram].[dbo].[Products])
+, CTE2 AS (SELECT *,RANK() OVER(Partition by PriceGroup ORDER BY ProductPrice asc)As Ranks FROM CTE1 )
+SELECT [productID],[ProductName],[ProductPrice] FROM CTE2 WHERE Ranks<3
