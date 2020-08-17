@@ -1,0 +1,10 @@
+--https://ramkedem.com/en/using-pivot-unpivot/
+--note the similarity in which we pivot and unpivot
+
+;with cte1 as(SELECT * FROM OfficeCosts
+unpivot (Charge /*measure*/ FOR ChargeType /*name of dimension*/ in (Cleaning,Equipment, Electricity)) As unpvt)
+
+--SELECT OfficeCity, Year(BillDate) as BillYear, Charge, ChargeType FROM cte1
+
+SELECT * FROM (SELECT OfficeCity, Year(BillDate) as BillYear, Charge, ChargeType FROM cte1) AS BaseData 
+	PIVOT (SUM(Charge)  For ChargeType in ([Cleaning],[Equipment],[Electricity])) AS PivotData
