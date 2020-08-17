@@ -5,6 +5,6 @@
 
 SELECT username, num_of_posts
 FROM user_posts
-WHERE num_of_posts IN ((SELECT MAX(num_of_posts) FROM user_posts),(SELECT MIN(num_of_posts) FROM user_posts))
+WHERE num_of_posts IN ((SELECT MAX(num_of_posts) FROM user_posts),(SELECT MIN(num_of_posts) FROM user_posts)) 
 
 
