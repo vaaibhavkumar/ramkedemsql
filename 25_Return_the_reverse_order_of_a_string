@@ -1,0 +1,18 @@
+--25. Return the reverse order of a string
+--https://ramkedem.com/en/reverse-order-string/
+-- this is my attempt. For official question and solutions, pls see official webpage/website
+
+DECLARE @string nvarchar(10) = 'Hello'
+DECLARE @Reverse_string nvarchar(10) =''
+DECLARE @length int = LEN(@string)
+DECLARE @CurrentChar char(1)= ''
+WHILE (@length>0)
+BEGIN
+	SET @CurrentChar = (SELECT ISNUll(SUBSTRING(@string,@length,1),''))
+	SET @Reverse_string=(SELECT (@Reverse_string+@CurrentChar))  
+	--SELECT @Reverse_string
+	SET @length = @length-1
+END
+SELECT @Reverse_string
+
+--Note for self: There is a unique way in which this is solved on the website. 
